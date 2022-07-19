@@ -41,7 +41,20 @@ export class CountriesComponent implements OnInit {
   }
 
   public filterArea(value:boolean) {
-    this.countriesData?.sort((a, b)=> value ? a.area - b.area : b.area - a.area)
+    this.countriesData?.sort((a, b) => {
+      if (a.area == null) {
+        a.area = 0
+      }
+      if (b.area == null) {
+        b.area = 0
+      }
+      if (value) {
+        return a.area - b.area
+      } else {
+        return b.area - a.area
+      }
+    })
+    // this.countriesData?.sort((a, b)=> value ? a.area - b.area : b.area - a.area)
   }
 
   public getLithuaniaArea() {
