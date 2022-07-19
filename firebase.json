@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/rest_countries_task",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
