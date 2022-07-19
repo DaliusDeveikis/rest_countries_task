@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  restCountriesApi: 'https://restcountries.com/v2/all?fields=name,region,area'
 };

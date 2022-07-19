@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  restCountriesApi: 'https://restcountries.com/v2/all?fields=name,region,area'
 };
 
 /*

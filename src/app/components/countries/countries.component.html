@@ -1,0 +1,90 @@
+<div class="card m-5 w-50">
+  <div class="card-header">Filter</div>
+  <div class="card-body">
+    <button class="btn btn-info btn-sm m-1" (click)="showCountries()">
+      All Countries
+    </button>
+    <button
+      class="btn btn-info btn-sm m-1"
+      (click)="smallerThanLithuaniaByArea()"
+    >
+      Smaller than Lithuania by area!
+    </button>
+    <button class="btn btn-info btn-sm m-1" (click)="oceaniaRegion()">
+      Oceania region!
+    </button>
+  </div>
+</div>
+
+<div class="card mt-5 m-md-5">
+  <div class="card-header">
+    Countries:
+    <small class="m-1">
+      <b> {{ countCountries() }} </b></small
+    >
+  </div>
+  <div class="card-body">
+    <table class="table table-hover text-center" *ngIf="countriesData">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">
+            Name
+            <button
+              class="btn btn-sm text-success border-0"
+              (click)="filterName(-1)"
+            >
+              Descending
+            </button>
+            <button
+              class="btn btn-sm text-success border-0"
+              (click)="filterName(1)"
+            >
+              Ascending
+            </button>
+          </th>
+          <th scope="col">Region</th>
+          <th scope="col">
+            Area
+            <button
+              class="btn btn-sm text-success border-0"
+              (click)="filterArea(false)"
+            >
+              Descending
+            </button>
+            <button
+              class="btn btn-sm text-success border-0"
+              (click)="filterArea(true)"
+            >
+              Ascending
+            </button>
+          </th>
+          <th scope="col">Independent</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let country of countriesData; index as i">
+        <tr>
+          <td>{{ i + 1 }}.</td>
+          <td>{{ country.name }}</td>
+          <td>{{ country.region }}</td>
+          <td>{{ country.area }}</td>
+          <td>
+            {{
+              country.independent
+                ? "Dependent state"
+                : "
+                An independent state"
+            }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <mat-paginator
+      [length]="pageSlice?.length"
+      [pageSize]="25"
+      [pageSizeOptions]="[25, 50, 75, 100, 200]"
+      (page)="onPageChange($event)"
+    >
+    </mat-paginator>
+  </div>
+</div>
